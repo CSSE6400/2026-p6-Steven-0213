@@ -11,6 +11,7 @@ resource "aws_db_instance" "taskoverflow_database" {
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.taskoverflow_database.id]
   publicly_accessible    = true
+
   tags = {
     Name = "taskoverflow_database"
   }
@@ -21,10 +22,10 @@ resource "aws_security_group" "taskoverflow_database" {
   description = "Allow inbound Postgres traffic"
 
   ingress {
-    from_port        = 5432
-    to_port          = 5432
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
